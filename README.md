@@ -23,7 +23,7 @@ Runs jsonlint -v on all files in nodes/ and data_bags.  Emits jsonlint to the co
     * a foodcritic installation
     * a jsonlint installation   
     * a chef-solo or chef-client installation (we need knife)
-    * perl (no CPAN modules needed)
+    * perl 5.12+ (no CPAN modules needed)
 
 ## Maturity
 
