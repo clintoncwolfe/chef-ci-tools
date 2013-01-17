@@ -13,6 +13,10 @@ Currently, we can only do static analysis - no real testing yet.  Stay tuned!
 
 Runs foodcritic on each of your cookbooks, one by one.  Emits foodcritic output to the console log, but also interprets it, to create an XML report in jUnit format.  Each rule is considered a testcase, and each cookbook a test suite - so multiple rule violations of the same rule in the same cookbook appear as one failure, but at least you get a constant number of tests.
 
+All arguments passed to chef-foodcritic-publisher.sh are passed to foodcritic, like this:
+
+    foodcritic <your-args> cookbook/<a-cookbook>
+
 ### jsonlint-junit publisher
 
 Runs jsonlint -v on all files in nodes/ and data_bags.  Emits jsonlint to the console log, but also interprets it, to create an XML report in jUnit format.  Each file is considered a test case.  Tries to interpret the most common errors (trailing comma, unquoted keys, etc).
