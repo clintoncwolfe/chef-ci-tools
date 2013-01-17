@@ -53,13 +53,18 @@ GetOptions(
 #------------------------------------------------------------#
 
 while (my $line = <>) {
-    my ($rule, $message, $filename, $lineno) = $line =~ /([A-Z]+\d+?):\s(.+?):\s(.+):(\d+)\n/;
-    if (exists $VIOLATIONS_BY_RULE{$rule}) {
-        print $line;  # Echo FC output
+    chomp $line;
+    my ($rule, $message, $filename, $lineno) = $line =~ /([A-Z]+\d+?):\s(.+?):\s(.+):(\d+)$/;
+    if (!$line) {
+        # Skip blank
+    } elsif (!$rule) {
+        print "Unparseable foodcritic output: $line\n";
+    } elsif (exists $VIOLATIONS_BY_RULE{$rule}) {
+        print $line . "\n";  # Echo FC output
         push @{$VIOLATIONS_BY_RULE{$rule}}, "$filename:$lineno";
         $MESSAGES_BY_RULE{$rule} = $message;
     } else {
-        print "ignoring in junit - " . $line; # Echo FC output
+        print "ignoring in junit - " . $line . "\n"; # Echo FC output
     }
 }
 
