@@ -57,6 +57,8 @@ while (my $line = <>) {
     my ($rule, $message, $filename, $lineno) = $line =~ /([A-Z]+\d+?):\s(.+?):\s(.+):(\d+)$/;
     if (!$line) {
         # Skip blank
+    } elsif ($line =~ /\[DEPRECATION\]/) {
+        # Ignore noisy ruby decprecation warnings
     } elsif (!$rule) {
         print "Unparseable foodcritic output: $line\n";
     } elsif (exists $VIOLATIONS_BY_RULE{$rule}) {
