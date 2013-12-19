@@ -26,7 +26,7 @@ use v5.12;
 #                  FC Rule Counts
 #------------------------------------------------------------#
 
-my $FOODCRITIC_RULE_COUNT = 45;
+my $FOODCRITIC_RULE_COUNT = 51;
 my @DEPRECATED_RULES = ( 1, 20, 35);
 my %MESSAGES_BY_RULE = (); # autopopulate as needed
 my %VIOLATIONS_BY_RULE = map { sprintf('FC%03d', $_) => [] } (1..$FOODCRITIC_RULE_COUNT);
